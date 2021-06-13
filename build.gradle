@@ -1,0 +1,37 @@
+plugins {
+    id 'java'
+}
+
+group 'com.company'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    spring_boot_ver = "2.3.12.RELEASE"
+    mapstruct_ver = "1.4.2.Final"
+    postgres_ver = "42.2.21"
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+
+    implementation "org.springframework.boot:spring-boot-starter-web:$spring_boot_ver"
+    implementation "org.springframework.boot:spring-boot-autoconfigure:$spring_boot_ver"
+    implementation "org.springframework.boot:spring-boot-starter-data-jpa:$spring_boot_ver"
+    implementation "org.springframework.boot:spring-boot-starter-security:$spring_boot_ver"
+    implementation "org.postgresql:postgresql:$postgres_ver"
+//    compile 'org.liquibase:liquibase-core:4.2.2'
+    compileOnly "org.mapstruct:mapstruct:$mapstruct_ver"
+    annotationProcessor "org.mapstruct:mapstruct-processor:$mapstruct_ver"
+
+    implementation 'org.mapstruct:mapstruct:1.4.2.Final'
+    annotationProcessor 'org.mapstruct:mapstruct-processor:1.4.2.Final'
+}
+
+test {
+    useJUnitPlatform()
+}
