@@ -1,0 +1,43 @@
+<app-navigation></app-navigation>
+<div class="col-md-6 col-md-offset-3 text-center">
+  <br>
+<!--  <p>-->
+<!--    <img [src]="getImg()"-->
+<!--         height="250"-->
+<!--         width="450">-->
+<!--  </p>-->
+  <h1 class="text">{{currentUser.firstName + ' ' + currentUser.lastName}}</h1>
+  <br><br>
+  <h2 class="text">My Bets</h2>
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="width: 100%">
+
+    <ng-container matColumnDef="sportGame">
+      <th *matHeaderCellDef mat-header-cell> Вид спорта</th>
+      <td *matCellDef="let element" mat-cell> {{element.match.sportGame.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="home">
+      <th *matHeaderCellDef mat-header-cell> Домашняя команда</th>
+      <td *matCellDef="let element" mat-cell> {{element.match.home.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="away">
+      <th *matHeaderCellDef mat-header-cell> Гостевая команда</th>
+      <td *matCellDef="let element" mat-cell> {{element.match.away.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="think">
+      <th *matHeaderCellDef mat-header-cell> Думаю, что победит</th>
+      <td *matCellDef="let element" mat-cell> {{element.winner.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+      <th *matHeaderCellDef mat-header-cell> Результат ставки</th>
+      <td *matCellDef="let element" mat-cell> {{betService.getBetStatus(element)}} </td>
+    </ng-container>
+
+    <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+    <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
+  </table>
+</div>

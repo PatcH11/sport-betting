@@ -15,4 +15,6 @@ import java.util.List;
 public interface BetRepository extends JpaRepository<Bet, Integer> {
 
     List<Bet> getAllByUserUsername(String username);
+
+    List<Bet> getAllByUserId(int userId);
 }

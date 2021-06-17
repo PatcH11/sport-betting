@@ -1,6 +1,6 @@
 package com.company.betting.service;
 
-import com.company.betting.data.entity.Score;
+import com.company.betting.data.dto.get.ScoreGetDto;
 
 import java.util.List;
 
@@ -11,5 +11,5 @@ public interface ScoreService {
      *
      * @return список всех счетов
      */
-    List<Score> getScores();
+    List<ScoreGetDto> getScores();
 }

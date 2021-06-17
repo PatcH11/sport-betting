@@ -1,6 +1,6 @@
 package com.company.betting.service;
 
-import com.company.betting.data.entity.Picture;
+import com.company.betting.data.dto.get.PictureGetDto;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -14,7 +14,7 @@ public interface PictureService {
      * @return созданная картинка
      * @throws IOException исключение при создании картинки
      */
-    Picture create(MultipartFile picture) throws IOException;
+    PictureGetDto create(MultipartFile picture) throws IOException;
 
     /**
      * Вернуть картинку по ее ID.
@@ -22,7 +22,7 @@ public interface PictureService {
      * @param id ID картинки
      * @return найденная картинка
      */
-    Picture getPicture(int id);
+    PictureGetDto getPicture(int id);
 
     /**
      * Вернуть картинку по ее названию.
@@ -30,5 +30,5 @@ public interface PictureService {
      * @param name название картинки
      * @return найденная картинка
      */
-    Picture findByName(String name);
+    PictureGetDto findByName(String name);
 }

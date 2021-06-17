@@ -1,7 +1,11 @@
 package com.company.betting.service.impl;
 
+import com.company.betting.data.dto.get.MatchGetDto;
+import com.company.betting.data.dto.get.ScoreGetDto;
 import com.company.betting.data.entity.Match;
 import com.company.betting.data.entity.Score;
+import com.company.betting.data.mapper.MatchMapper;
+import com.company.betting.data.mapper.ScoreMapper;
 import com.company.betting.data.repository.MatchRepository;
 import com.company.betting.data.repository.ScoreRepository;
 import com.company.betting.service.MatchService;
@@ -15,48 +19,54 @@ import java.util.List;
 @Service
 public class MatchServiceImpl implements MatchService {
 
-    /**
-     * Репозиторий для матчей.
-     */
-    private final MatchRepository matchRepository;
-
-    /**
-     * Репозиторий для счетов.
-     */
+    private final MatchMapper matchMapper;
+    private final ScoreMapper scoreMapper;
     private final ScoreRepository scoreRepository;
+    private final MatchRepository matchRepository;
 
     @Autowired
     public MatchServiceImpl(MatchRepository matchRepository,
-                            ScoreRepository scoreRepository) {
+                            ScoreRepository scoreRepository,
+                            MatchMapper matchMapper,
+                            ScoreMapper scoreMapper) {
         this.matchRepository = matchRepository;
         this.scoreRepository = scoreRepository;
+        this.matchMapper = matchMapper;
+        this.scoreMapper = scoreMapper;
     }
 
     @Override
-    public List<Match> getMatches() {
-        return matchRepository.findAll();
+    public List<MatchGetDto> getMatches() {
+        return matchMapper.toGetDto(matchRepository.findAll());
     }
 
     @Override
-    public Match findByHomeIdOrAwayId(int homeId, int awayId) {
-        return matchRepository.findByHomeIdOrAwayId(homeId, awayId);
+    public MatchGetDto findByHomeIdOrAwayId(int homeId, int awayId) {
+        return matchMapper.toGetDto(matchRepository.findByHomeIdOrAwayId(homeId, awayId));
     }
 
     @Override
     @Transactional
-    public void playMatches(List<Match> matches) {
-        for (Match match : matches) {
+    public void playMatches() {
+        List<MatchGetDto> matches = getMatches();
+
+        for (MatchGetDto match : matches) {
 
             Score score = new Score();
-
-            match.setScore(score);
-
-            matchRepository.save(match);
 
             score.setHomeScore(RandomNumberGenerator.generateRandomNumber(5));
             score.setAwayScore(RandomNumberGenerator.generateRandomNumber(5));
 
             scoreRepository.save(score);
+
+            match.setScore(scoreMapper.toGetDto(score));
+
+            matchRepository.save(matchMapper.fromGetDto(match));
         }
+    }
+
+    @Override
+    public Match findById(int matchId) {
+        return matchRepository.findById(matchId).get();
     }
 }

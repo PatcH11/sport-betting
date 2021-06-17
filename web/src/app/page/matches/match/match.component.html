@@ -1,0 +1,45 @@
+<app-navigation></app-navigation>
+<br>
+<div class="container">
+
+  <div class="container">
+    <button (click)="playMatches()" color="primary" mat-button mat-flat-button> Провести матчи
+    </button>
+  </div>
+
+  <br>
+  <div class="container">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="width: 100%">
+
+      <ng-container matColumnDef="sportGame">
+        <th *matHeaderCellDef mat-header-cell> Вид спорта</th>
+        <td *matCellDef="let element" mat-cell> {{element.sportGame.name}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="home">
+        <th *matHeaderCellDef mat-header-cell> Домашняя команда</th>
+        <td *matCellDef="let element" mat-cell> {{element.home.name}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="away">
+        <th *matHeaderCellDef mat-header-cell> Гостевая команда</th>
+        <td *matCellDef="let element" mat-cell> {{element.away.name}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="score">
+        <th *matHeaderCellDef mat-header-cell> Счёт</th>
+        <td *matCellDef="let element" mat-cell> {{element.score.homeScore + ":" + element.score.awayScore}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="action">
+        <th *matHeaderCellDef mat-header-cell> Действия</th>
+        <td *matCellDef="let element" class="action-link" mat-cell>
+          <button (click)="openDialog('Add',element)" mat-raised-button color="accent" [disabled]="element.score.homeScore != null">Сделать ставку</button>
+        </td>
+      </ng-container>
+
+      <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+      <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
+    </table>
+  </div>
+</div>

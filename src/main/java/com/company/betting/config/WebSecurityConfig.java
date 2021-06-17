@@ -3,6 +3,7 @@ package com.company.betting.config;
 import com.company.betting.security.CustomUserDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -10,6 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 /**
  * Конфигурационный класс для безопасноти.
@@ -36,7 +38,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
      * @return кодировщик пароля
      */
     @Bean
-    public BCryptPasswordEncoder passwordEncoder() {
+    public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
@@ -67,28 +69,32 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
      */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
+//        http
+//                .csrf().disable()
+//                .authorizeRequests()
+//                .antMatchers("/api/user/get").permitAll()
+//                .antMatchers("/api/user/create").permitAll()
+//                .antMatchers("/api/user/name").permitAll()
+//                .antMatchers("/api/user/getUser").permitAll()
+//                .antMatchers("/api/user/login").permitAll()
+//                .anyRequest().authenticated()
+//                .and()
+//                .formLogin()
+//                .usernameParameter("login")
+//                .defaultSuccessUrl("/")
+//                .permitAll()
+//                .and()
+//                .logout()
+//                .permitAll()
+//                .logoutSuccessUrl("/");
+
+        http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/").permitAll()
-                .antMatchers("/register",
-                        "/logout",
-                        "/css/**",
-                        "/js/**",
-                        "/img/**",
-                        "/**/favicon.ico",
-                        "/webjars/**",
-                        "/signup").permitAll()
-                .antMatchers("/register").permitAll()
-                .antMatchers("/process_register").permitAll()
-                .anyRequest().authenticated()
+                .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+                .antMatchers("/api/auth/login").permitAll()
+                .anyRequest()
+                .authenticated()
                 .and()
-                .formLogin()
-                .usernameParameter("login")
-                .defaultSuccessUrl("/bets")
-                .permitAll()
-                .and()
-                .logout()
-                .permitAll()
-                .logoutSuccessUrl("/");
+                .httpBasic();
     }
 }

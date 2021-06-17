@@ -1,0 +1,17 @@
+<app-navigation></app-navigation>
+<h1 mat-dialog-title class="text-center"><strong>{{action}}</strong></h1>
+<div mat-dialog-content class="text-center">
+  <p>
+    <mat-form-field appearance="legacy">
+      <mat-label>Команда</mat-label>
+      <mat-select [(ngModel)]="winnerId">
+        <mat-option [value]="local_data.home.id">{{local_data.home.name}}</mat-option>
+        <mat-option [value]="local_data.away.id">{{local_data.away.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </p>
+</div>
+<div mat-dialog-actions class=" justify-content-center">
+  <button (click)="doAction()" mat-button *ngIf="action === 'Add'">{{action}}</button>
+  <button (click)="closeDialog()" color="warn" mat-button mat-flat-button>Cancel</button>
+</div>

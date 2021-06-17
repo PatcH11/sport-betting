@@ -1,5 +1,6 @@
 package com.company.betting.service;
 
+import com.company.betting.data.dto.get.MatchGetDto;
 import com.company.betting.data.entity.Match;
 
 import java.util.List;
@@ -11,7 +12,7 @@ public interface MatchService {
      *
      * @return список матчей
      */
-    List<Match> getMatches();
+    List<MatchGetDto> getMatches();
 
     /**
      * Поиск матча по ID команды.
@@ -20,12 +21,13 @@ public interface MatchService {
      * @param awayId ID гостевой команды
      * @return найденный матч
      */
-    Match findByHomeIdOrAwayId(int homeId, int awayId);
+    MatchGetDto findByHomeIdOrAwayId(int homeId, int awayId);
 
     /**
      * Сыграть все матчи.
      *
-     * @param matches список матчей, которые необходимо сыграть
      */
-    void playMatches(List<Match> matches);
+    void playMatches();
+
+    Match findById(int matchId);
 }

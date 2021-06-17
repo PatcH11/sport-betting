@@ -1,6 +1,11 @@
 package com.company.betting.service;
 
+import com.company.betting.data.dto.create.UserCreateDto;
+import com.company.betting.data.dto.get.UserGetDto;
 import com.company.betting.data.entity.User;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 
 public interface UserService {
 
@@ -10,7 +15,7 @@ public interface UserService {
      * @param user пользователь
      * @return созданный пользователь
      */
-    User create(User user);
+    UserGetDto create(UserCreateDto user) throws IOException;
 
     /**
      * Поиск пользователя по его нику.
@@ -18,5 +23,7 @@ public interface UserService {
      * @param username ник пользователя
      * @return найденный пользователь
      */
-    User findByUsername(String username);
+    UserGetDto findByUsername(String username);
+
+    User findById(int userId);
 }

@@ -1,6 +1,8 @@
 package com.company.betting.service;
 
-import com.company.betting.data.entity.Bet;
+import com.company.betting.data.dto.create.BetCreateDto;
+import com.company.betting.data.dto.get.BetGetDto;
+import com.company.betting.data.dto.get.UserGetDto;
 
 import java.util.List;
 
@@ -13,13 +15,13 @@ public interface BetService {
      * @param bet ставка
      * @return сделанная ставка
      */
-    Bet create(Bet bet);
+    BetGetDto create(BetCreateDto bet);
 
     /**
      * Возвращение списка ставок по username пользователя.
      *
-     * @param username ник пользователя
+     * @param user пользователь
      * @return список ставок
      */
-    List<Bet> getAllByUserUsername(String username);
+    List<BetGetDto> getAllBetsByUserId(UserGetDto user);
 }

@@ -1,5 +1,6 @@
 package com.company.betting.data.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -28,7 +29,7 @@ public class Match {
     private SportGame sportGame;
 
     @JoinColumn(name = "score_id")
-    @ManyToOne(targetEntity = Score.class)
+    @ManyToOne(targetEntity = Score.class, cascade = CascadeType.ALL)
     private Score score;
 
     @JoinColumn(name = "team_home_id")
