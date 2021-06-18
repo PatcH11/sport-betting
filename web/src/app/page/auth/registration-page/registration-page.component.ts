@@ -92,6 +92,7 @@ export class RegistrationPageComponent implements OnInit {
             }
           )
         }
+        this.router.navigate(['login']);
       },
       (err: any) => {
         console.log(err);
@@ -102,6 +103,8 @@ export class RegistrationPageComponent implements OnInit {
     this.selectedFiles = undefined;
 
     console.log(this.pic);
+
+
   }
 }
 

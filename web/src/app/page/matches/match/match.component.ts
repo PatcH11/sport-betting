@@ -1,11 +1,12 @@
 import {Component, OnInit} from '@angular/core';
-import {Match} from "../../../model/match";
+import {Match, MatchDontPlay} from "../../../model/match";
 import {MatchService} from "../../../service/match.service";
 import {MatDialog} from "@angular/material/dialog";
 import {DialogBoxMatchComponent} from "../dialog-box-match/dialog-box-match.component";
 import {BetService} from "../../../service/bet.service";
 import {BetCreate} from "../../../model/bet";
 import {AuthService} from "../../../service/auth.service";
+import {ScoreService} from "../../../service/score.service";
 
 @Component({
   selector: 'app-match',
@@ -21,12 +22,13 @@ export class MatchComponent implements OnInit {
   constructor(public dialog: MatDialog,
               private matchService: MatchService,
               private betService: BetService,
-              private auth: AuthService) {
+              private auth: AuthService,
+              private scoreService: ScoreService) {
   }
 
   ngOnInit(): void {
-    this.setCurrentUserId();
     this.getAllMatches();
+    this.setCurrentUserId();
   }
 
   getAllMatches() {

@@ -1,5 +1,6 @@
 package com.company.betting.service.impl;
 
+import com.company.betting.data.dto.get.MatchDontPlayDto;
 import com.company.betting.data.dto.get.MatchGetDto;
 import com.company.betting.data.dto.get.ScoreGetDto;
 import com.company.betting.data.entity.Match;
@@ -33,6 +34,12 @@ public class MatchServiceImpl implements MatchService {
         this.scoreRepository = scoreRepository;
         this.matchMapper = matchMapper;
         this.scoreMapper = scoreMapper;
+    }
+
+    @Override
+    public List<MatchDontPlayDto> getDontPlayMatches() {
+        List<MatchDontPlayDto> matchDontPlayDtos = matchMapper.toMatchDontPlayDto(matchRepository.findAll());
+        return matchDontPlayDtos;
     }
 
     @Override

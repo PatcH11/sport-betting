@@ -16,7 +16,7 @@ export class UserComponent implements OnInit {
   displayedColumns: string[] = ['sportGame', 'home', 'away', 'think', 'status'];
   dataSource: Bet[];
 
-  constructor(private http: HttpClient, private auth: AuthService, private betService: BetService) {
+  constructor(private http: HttpClient, private auth: AuthService, public betService: BetService) {
   }
 
   ngOnInit(): void {

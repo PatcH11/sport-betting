@@ -1,5 +1,6 @@
 package com.company.betting.controller;
 
+import com.company.betting.data.dto.get.MatchDontPlayDto;
 import com.company.betting.data.dto.get.MatchGetDto;
 import com.company.betting.service.MatchService;
 import com.company.betting.service.ScoreService;
@@ -36,5 +37,10 @@ public class MatchController {
     @PostMapping("/play")
     public void playMatches() {
         matchService.playMatches();
+    }
+
+    @PostMapping("/dont-play")
+    public List<MatchDontPlayDto> getDontPlayMatches() {
+        return matchService.getDontPlayMatches();
     }
 }

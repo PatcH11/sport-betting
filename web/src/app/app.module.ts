@@ -32,9 +32,8 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 const appRoutes: Routes = [
   {
     path: '',
-    component: UserComponent,
-    pathMatch: 'full',
-    canActivate: [AuthGuard]
+    component: LoginPageComponent,
+    pathMatch: 'full'
   },
   {
     path: 'login', component: LoginPageComponent
@@ -42,9 +41,9 @@ const appRoutes: Routes = [
   {
     path: 'registration', component: RegistrationPageComponent
   },
-  // {
-  //   path: 'user', component: UserComponent, canActivate: [AuthGuard]
-  // },
+  {
+    path: 'user', component: UserComponent, canActivate: [AuthGuard]
+  },
   {
     path: 'match', component: MatchComponent, canActivate: [AuthGuard]
   },

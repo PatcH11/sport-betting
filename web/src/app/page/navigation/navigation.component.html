@@ -2,14 +2,24 @@
   <mat-toolbar-row>
     <h1>Sport bets</h1>
     <div>
-      <button mat-button [routerLink]="['']">Личный кабинет</button>
+      <button mat-button [routerLink]="['/user']">Личный кабинет</button>
       <button mat-button [routerLink]="['/match']">Матчи</button>
     </div>
     <span class="example-spacer"></span>
     <div>
       <button mat-button *ngIf="isAuthenticated" (click)="logout()">
         <mat-icon>exit_to_app</mat-icon>
-        Logout
+        Выйти
+      </button>
+    </div>
+    <div>
+      <button mat-button *ngIf="!isAuthenticated" [routerLink]="['/login']">
+        Войти
+      </button>
+    </div>
+    <div>
+      <button mat-button *ngIf="!isAuthenticated" [routerLink]="['/registration']">
+        Зарегестрироваться
       </button>
     </div>
   </mat-toolbar-row>

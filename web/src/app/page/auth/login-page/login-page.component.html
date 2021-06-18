@@ -2,24 +2,24 @@
 <mat-card>
   <mat-card-content>
     <form [formGroup]="form" (ngSubmit)="login()">
-      <h2>Log In</h2>
+      <h2>Авторизация</h2>
       <mat-error *ngIf="loginInvalid">
-        The username and password were not recognized
+        Имя пользователя и пароль не распознаны
       </mat-error>
       <mat-form-field class="full-width-input">
         <label>
-          <input matInput placeholder="Email" formControlName="username" required>
+          <input matInput placeholder="Логин" formControlName="username" required>
         </label>
         <mat-error>
-          Please provide a valid email address
+          Пожалуйста, представьте действующий логин
         </mat-error>
       </mat-form-field>
       <mat-form-field class="full-width-input">
         <label>
-          <input matInput type="password" placeholder="Password" formControlName="password" required>
+          <input matInput type="password" placeholder="Пароль" formControlName="password" required>
         </label>
         <mat-error>
-          Please provide a valid password
+          Пожалуйста, укажите действующий пароль
         </mat-error>
       </mat-form-field>
       <button mat-raised-button color="primary">Войти</button>

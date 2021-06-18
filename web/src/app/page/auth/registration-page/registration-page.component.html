@@ -1,68 +1,68 @@
 <app-navigation></app-navigation>
-<mat-card>
+<div class="text-center">
+  <mat-card>
 
-  <mat-card-header>
-    <mat-card-title>Регистрация</mat-card-title>
-  </mat-card-header>
+    <h2>Регистрация</h2>
 
-  <form [formGroup]="form" (ngSubmit)="registration()">
-    <mat-error *ngIf="loginInvalid">
-      The username and password were not recognized
-    </mat-error>
+    <form [formGroup]="form" (ngSubmit)="registration()">
+      <mat-error *ngIf="loginInvalid">
+        The username and password were not recognized
+      </mat-error>
 
-    <mat-card-content>
-      <mat-form-field class="full-width-input">
-        <label>
-          <input matInput placeholder="Логин" formControlName="username" required>
-        </label>
-        <mat-error>
-          Please provide a valid email address
-        </mat-error>
-      </mat-form-field>
+      <mat-card-content>
+        <mat-form-field class="full-width-input">
+          <label>
+            <input matInput placeholder="Логин" formControlName="username" required>
+          </label>
+          <mat-error>
+            Please provide a valid email address
+          </mat-error>
+        </mat-form-field>
 
-      <mat-form-field class="full-width-input">
-        <label>
-          <input matInput type="email" placeholder="Email" formControlName="email" required>
-        </label>
-        <mat-error>
-          Please provide a valid password
-        </mat-error>
-      </mat-form-field>
+        <mat-form-field class="full-width-input">
+          <label>
+            <input matInput type="email" placeholder="Email" formControlName="email" required>
+          </label>
+          <mat-error>
+            Please provide a valid password
+          </mat-error>
+        </mat-form-field>
 
-      <mat-form-field class="full-width-input">
-        <label>
-          <input matInput type="text" placeholder="Имя" formControlName="firstName" required>
-        </label>
-        <mat-error>
-          Please provide a valid password
-        </mat-error>
-      </mat-form-field>
+        <mat-form-field class="full-width-input">
+          <label>
+            <input matInput type="text" placeholder="Имя" formControlName="firstName" required>
+          </label>
+          <mat-error>
+            Please provide a valid password
+          </mat-error>
+        </mat-form-field>
 
-      <mat-form-field class="full-width-input">
-        <label>
-          <input matInput type="text" placeholder="Фамилия" formControlName="lastName" required>
-        </label>
-        <mat-error>
-          Please provide a valid password
-        </mat-error>
-      </mat-form-field>
+        <mat-form-field class="full-width-input">
+          <label>
+            <input matInput type="text" placeholder="Фамилия" formControlName="lastName" required>
+          </label>
+          <mat-error>
+            Please provide a valid password
+          </mat-error>
+        </mat-form-field>
 
-      <mat-form-field class="full-width-input">
-        <label>
-          <input matInput type="password" placeholder="Пароль" formControlName="password" required>
-        </label>
-        <mat-error>
-          Please provide a valid password
-        </mat-error>
-      </mat-form-field>
-
-
-      <input type="file" formControlName="photo" (change)="selectFile($event)">
+        <mat-form-field class="full-width-input">
+          <label>
+            <input matInput type="password" placeholder="Пароль" formControlName="password" required>
+          </label>
+          <mat-error>
+            Please provide a valid password
+          </mat-error>
+        </mat-form-field>
 
 
-    </mat-card-content>
+        <input type="file" formControlName="photo" (change)="selectFile($event)">
 
-    <button mat-raised-button color="primary">Зарегистрироваться</button>
-  </form>
 
-</mat-card>
+      </mat-card-content>
+
+      <button mat-raised-button color="primary">Зарегистрироваться</button>
+    </form>
+
+  </mat-card>
+</div>

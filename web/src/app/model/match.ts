@@ -9,3 +9,10 @@ export interface Match {
   home: Team;
   away: Team;
 }
+
+export interface MatchDontPlay {
+  id: number;
+  sportGame: SportGame;
+  home: Team;
+  away: Team;
+}

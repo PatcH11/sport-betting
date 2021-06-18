@@ -1,11 +1,14 @@
 package com.company.betting.service;
 
+import com.company.betting.data.dto.get.MatchDontPlayDto;
 import com.company.betting.data.dto.get.MatchGetDto;
 import com.company.betting.data.entity.Match;
 
 import java.util.List;
 
 public interface MatchService {
+
+    List<MatchDontPlayDto> getDontPlayMatches();
 
     /**
      * Возвращение списка матчей.

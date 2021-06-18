@@ -28,13 +28,15 @@
 
       <ng-container matColumnDef="score">
         <th *matHeaderCellDef mat-header-cell> Счёт</th>
-        <td *matCellDef="let element" mat-cell> {{element.score.homeScore + ":" + element.score.awayScore}} </td>
+        <td *matCellDef="let element" mat-cell> {{matchService.getMatchStatus(element)}} </td>
       </ng-container>
 
       <ng-container matColumnDef="action">
         <th *matHeaderCellDef mat-header-cell> Действия</th>
         <td *matCellDef="let element" class="action-link" mat-cell>
-          <button (click)="openDialog('Add',element)" mat-raised-button color="accent" [disabled]="element.score.homeScore != null">Сделать ставку</button>
+          <button [disabled]="element.score != null" (click)="openDialog('Add',element)" mat-raised-button
+                  color="accent">Сделать ставку
+          </button>
         </td>
       </ng-container>
 

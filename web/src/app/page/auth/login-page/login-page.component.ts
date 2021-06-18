@@ -45,7 +45,7 @@ export class LoginPageComponent implements OnInit {
         this.auth.isAuth = true;
         sessionStorage.setItem('token', btoa(user.username + ':' + user.password));
         console.log(this.auth.getTokenFromSessionStorage());
-        this.router.navigate(['']);
+        this.router.navigate(['user']);
       } else {
         alert("Authentication failed.")
       }

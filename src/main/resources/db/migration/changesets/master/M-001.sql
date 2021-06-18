@@ -1,21 +1,21 @@
-INSERT INTO sport_games(name) VALUES ('Football');
-INSERT INTO sport_games(name) VALUES ('Basketball');
-INSERT INTO sport_games(name) VALUES ('Volleyball');
+INSERT INTO sport_games(name) VALUES ('Футбол');
+INSERT INTO sport_games(name) VALUES ('Хоккей');
+INSERT INTO sport_games(name) VALUES ('Бейсбол');
 
-INSERT INTO teams(name) VALUES ('Barcelona');
-INSERT INTO teams(name) VALUES ('Real Madrid');
-INSERT INTO teams(name) VALUES ('Spartak Moscow');
-INSERT INTO teams(name) VALUES ('CSKA Moscow');
+INSERT INTO teams(name) VALUES ('Барселона');
+INSERT INTO teams(name) VALUES ('Реал Мадрид');
+INSERT INTO teams(name) VALUES ('Спартак Москва');
+INSERT INTO teams(name) VALUES ('ЦСКА Москва');
 
-INSERT INTO teams(name) VALUES ('Lakers');
-INSERT INTO teams(name) VALUES ('Miami Heat');
-INSERT INTO teams(name) VALUES ('Chicago Bulls');
-INSERT INTO teams(name) VALUES ('Spurs');
+INSERT INTO teams(name) VALUES ('Айлендерс');
+INSERT INTO teams(name) VALUES ('Тампа-Бэй');
+INSERT INTO teams(name) VALUES ('Вегас');
+INSERT INTO teams(name) VALUES ('Монреаль');
 
-INSERT INTO teams(name) VALUES ('Belogorie');
-INSERT INTO teams(name) VALUES ('Grozny');
-INSERT INTO teams(name) VALUES ('Dynamo');
-INSERT INTO teams(name) VALUES ('Zenith');
+INSERT INTO teams(name) VALUES ('Оаксака');
+INSERT INTO teams(name) VALUES ('Юкатан');
+INSERT INTO teams(name) VALUES ('Веракрус');
+INSERT INTO teams(name) VALUES ('Куинтана Ру');
 
 INSERT INTO matches(sport_game_id, team_home_id, team_away_id) VALUES (1, 1, 2);
 INSERT INTO matches(sport_game_id, team_home_id, team_away_id) VALUES (1, 3, 4);
